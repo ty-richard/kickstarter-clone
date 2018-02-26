@@ -39,7 +39,7 @@ contract Campaign {
     minimumContribution = minimum;
   }
     
-  function contribute() public payable{
+  function contribute() public payable {
     require(msg.value > minimumContribution);
     approvers[msg.sender] = true;
     approversCount++;
@@ -64,7 +64,7 @@ contract Campaign {
     request.approvalCount++;
   }
     
-  function finializeRequest(uint index) public restricted {
+  function finalizeRequest(uint index) public restricted {
     Request storage request = requests[index];
     require(request.approvalCount > (approversCount / 2));
     require(!request.complete);
